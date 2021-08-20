@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"testing"
 	"time"
 
@@ -15,12 +14,6 @@ const (
 	driver = "mysql"
 	source = "root:haiwei@100@tcp(localhost:3306)/db_redeem?parseTime=1"
 )
-
-type Namer interface {
-	GetName() string
-}
-
-var typeNamer = reflect.TypeOf((*Namer)(nil)).Elem()
 
 type AccountInfo struct {
 	AccountId uint64 `db:"account_id"`

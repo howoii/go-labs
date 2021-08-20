@@ -8,17 +8,26 @@ import (
 	"testing"
 )
 
+type Namer interface {
+	GetName() string
+}
+
+var typeNamer = reflect.TypeOf((*Namer)(nil)).Elem()
+
 func TestReflectType(t *testing.T) {
-	var s *string
-	var i interface{} = s
-	switch i.(type) {
+	var i interface{} = (*interface{})(nil)
+	switch v := i.(type) {
 	case *uint32:
-		fmt.Println("*uint")
+		fmt.Println("*uint", v)
 	case *interface{}:
-		fmt.Println("interface")
+		fmt.Println("interface", v)
+	case *Namer:
+		fmt.Println(reflect.TypeOf(v))
 	default:
-		fmt.Println("default")
+		t := reflect.TypeOf(i)
+		fmt.Println(t.String())
 	}
+
 }
 
 func TestReflectMethod(t *testing.T) {

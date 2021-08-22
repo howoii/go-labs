@@ -1,13 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"io"
+	"context"
+	"net/url"
 	"os"
 
+	"github.com/labs/tracing/config"
 	"github.com/opentracing/opentracing-go"
-	"github.com/uber/jaeger-client-go"
-	config "github.com/uber/jaeger-client-go/config"
+	"github.com/opentracing/opentracing-go/ext"
+	"github.com/opentracing/opentracing-go/log"
+)
+
+const (
+	serverUrl = "http://localhost:%d/%s"
 )
 
 func main() {
@@ -15,31 +20,55 @@ func main() {
 		panic("ERROR: Expecting one argument")
 	}
 	helloTo := os.Args[1]
-	helloStr := fmt.Sprintf("Hello, %s!", helloTo)
 
 	tracer, closer := initJaeger("hello-world")
+	opentracing.SetGlobalTracer(tracer) //设置全局tracer，StartSpanFromContext里会用到
 	defer closer.Close()
 
 	span := tracer.StartSpan("say_hello")
 	span.SetTag("hello-to", helloTo)
-	println(helloStr)
+
+	ctx := opentracing.ContextWithSpan(context.Background(), span)
+	helloStr := formatString(ctx, helloTo)
+	printHello(ctx, helloStr)
+
 	span.Finish()
 }
 
-func initJaeger(service string) (opentracing.Tracer, io.Closer) {
-	cfg := &config.Configuration{
-		ServiceName: service,
-		Sampler: &config.SamplerConfig{
-			Type:  jaeger.SamplerTypeConst,
-			Param: 1,
-		},
-		Reporter: &config.ReporterConfig{
-			LogSpans: true,
-		},
-	}
-	tracer, closer, err := cfg.NewTracer(config.Logger(jaeger.StdLogger))
+func formatString(ctx context.Context, helloTo string) string {
+	// 从ctx中取出rootSpan，开始一个新的span，作为rootSpan的子span（详情看源码注释）
+	span, _ := opentracing.StartSpanFromContext(ctx, "formatString")
+	defer span.Finish()
+
+	resp, err := getHttpResponse(config.MethodFormatter, url.Values{
+		"helloTo": {helloTo},
+	}, span)
 	if err != nil {
-		panic(err)
+		ext.LogError(span, err)
+		return resp
 	}
-	return tracer, closer
+	span.LogFields(
+		log.String("event", "http-format-string"),
+		log.String("value", resp),
+	)
+	return resp
+}
+
+func printHello(ctx context.Context, helloStr string) {
+	//原始写法，可以用StartSpanFromContext一步到位
+	rootSpan := opentracing.SpanFromContext(ctx)
+	span := rootSpan.Tracer().StartSpan("printHello", opentracing.ChildOf(rootSpan.Context()))
+	span.SetTag("span.kind", "http-client")
+	defer span.Finish()
+
+	_, err := getHttpResponse(config.MethodPublisher, url.Values{
+		"helloStr": {helloStr},
+	}, span)
+	if err != nil {
+		ext.LogError(span, err)
+		return
+	}
+	span.LogKV(
+		"event", "http-print-hello",
+	)
 }

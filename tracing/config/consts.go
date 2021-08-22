@@ -3,11 +3,11 @@ package config
 const (
 	ServerUrl = "http://localhost:%d/%s"
 
-	MethodFormatter = "formatter"
-	MethodPublisher = "publisher"
+	MethodFormat  = "format"
+	MethodPublish = "publish"
 )
 
 var RoleToPort = map[string]int32{
-	MethodFormatter: 8080,
-	MethodPublisher: 8081,
+	MethodFormat:  8080,
+	MethodPublish: 8081,
 }

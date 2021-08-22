@@ -7,11 +7,11 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/labs/tracing/config"
+	conf "github.com/labs/tracing/config"
 )
 
 func GetServerUrl(port int32, method string) string {
-	return fmt.Sprintf(config.ServerUrl, port, method)
+	return fmt.Sprintf(conf.ServerUrl, port, method)
 }
 
 func GetRequest(url string, body url.Values) *http.Request {

@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/labs/tracing/config"
+	conf "github.com/labs/tracing/config"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
 	"github.com/opentracing/opentracing-go/log"
@@ -40,7 +40,7 @@ func formatString(ctx context.Context, helloTo string) string {
 	span, _ := opentracing.StartSpanFromContext(ctx, "formatString")
 	defer span.Finish()
 
-	resp, err := getHttpResponse(config.MethodFormatter, url.Values{
+	resp, err := getHttpResponse(conf.MethodFormat, url.Values{
 		"helloTo": {helloTo},
 	}, span)
 	if err != nil {
@@ -58,10 +58,9 @@ func printHello(ctx context.Context, helloStr string) {
 	//原始写法，可以用StartSpanFromContext一步到位
 	rootSpan := opentracing.SpanFromContext(ctx)
 	span := rootSpan.Tracer().StartSpan("printHello", opentracing.ChildOf(rootSpan.Context()))
-	span.SetTag("span.kind", "http-client")
 	defer span.Finish()
 
-	_, err := getHttpResponse(config.MethodPublisher, url.Values{
+	_, err := getHttpResponse(conf.MethodPublish, url.Values{
 		"helloStr": {helloStr},
 	}, span)
 	if err != nil {

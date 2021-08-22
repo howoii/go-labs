@@ -7,28 +7,23 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/labs/tracing/config"
+	conf "github.com/labs/tracing/config"
 )
 
 var (
-	role = flag.String("role", "formatter", "input your role")
-
-	roleToPort = map[string]int32{
-		"formatter": 8080,
-		"publisher": 8081,
-	}
+	method = flag.String("method", "format", "input your method")
 )
 
 func main() {
 	flag.Parse()
-	port, ok := config.RoleToPort[*role]
+	port, ok := conf.RoleToPort[*method]
 	if !ok {
-		panic("invalid role")
+		panic("invalid method")
 	}
-	log.Printf("start service %s on port %d", *role, port)
+	log.Printf("start service %s on port %d", *method, port)
 
-	http.HandleFunc("/formatter", formatHandler)
-	http.HandleFunc("/publisher", publishHandler)
+	http.HandleFunc("/format", formatHandler)
+	http.HandleFunc("/publish", publishHandler)
 
 	url := ":" + strconv.FormatInt(int64(port), 10)
 	if err := http.ListenAndServe(url, nil); err != nil {

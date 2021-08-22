@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/url"
 
-	pkgConfig "github.com/labs/tracing/config"
+	conf "github.com/labs/tracing/config"
 	httpUtil "github.com/labs/tracing/http"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
@@ -34,7 +34,7 @@ func initJaeger(service string) (opentracing.Tracer, io.Closer) {
 }
 
 func getHttpResponse(method string, data url.Values, span opentracing.Span) (string, error) {
-	serverUrl := httpUtil.GetServerUrl(pkgConfig.RoleToPort[method], method)
+	serverUrl := httpUtil.GetServerUrl(conf.RoleToPort[method], method)
 	ext.SpanKindRPCClient.Set(span)
 	ext.HTTPUrl.Set(span, serverUrl)
 	ext.HTTPMethod.Set(span, method)

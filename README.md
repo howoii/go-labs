@@ -1,6 +1,6 @@
 # go-labs
 
-### HOW TO RUN TEST
+### How To Run Tests
 ```shell
 $ go test -run regxp
 ```

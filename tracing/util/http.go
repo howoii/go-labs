@@ -1,4 +1,4 @@
-package httpUtil
+package util
 
 import (
 	"fmt"
@@ -23,7 +23,7 @@ func GetRequest(url string, body url.Values) *http.Request {
 	return req
 }
 
-func Do(req *http.Request) ([]byte, error) {
+func DoRequest(req *http.Request) ([]byte, error) {
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return nil, err

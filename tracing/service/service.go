@@ -1,48 +1,58 @@
 package main
 
 import (
-	"flag"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
-	"strconv"
 
-	conf "github.com/labs/tracing/config"
+	"github.com/labs/tracing/util"
+	"github.com/opentracing/opentracing-go"
 )
 
-var (
-	method = flag.String("method", "format", "input your method")
-)
+type TracerHolder interface {
+	GetTracer() opentracing.Tracer
+}
 
-func main() {
-	flag.Parse()
-	port, ok := conf.RoleToPort[*method]
-	if !ok {
-		panic("invalid method")
+type Service struct {
+	Tracer opentracing.Tracer
+	Closer io.Closer
+}
+
+func NewService(name string) *Service {
+	tracer, closer := util.InitTracer(name)
+	if tracer == nil {
+		return nil
 	}
-	log.Printf("start service %s on port %d", *method, port)
-
-	http.HandleFunc("/format", formatHandler)
-	http.HandleFunc("/publish", publishHandler)
-
-	url := ":" + strconv.FormatInt(int64(port), 10)
-	if err := http.ListenAndServe(url, nil); err != nil {
-		log.Println("server exit")
+	return &Service{
+		Tracer: tracer,
+		Closer: closer,
 	}
 }
 
-func formatHandler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
+func (srv *Service) FormatHandler(w http.ResponseWriter, r *http.Request) error {
+	if err := r.ParseForm(); err != nil {
+		return err
+	}
 	helloTo := r.FormValue("helloTo")
 	helloStr := fmt.Sprintf("Hello, %s!", helloTo)
 
-	w.Write([]byte(helloStr))
+	_, err := w.Write([]byte(helloStr))
+	return err
 }
 
-func publishHandler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
+func (srv *Service) PublishHandler(w http.ResponseWriter, r *http.Request) error {
+	if err := r.ParseForm(); err != nil {
+		return err
+	}
 	helloStr := r.FormValue("helloStr")
 	log.Println(helloStr)
 
-	w.Write([]byte{})
+	_, err := w.Write([]byte{})
+	return err
+}
+
+// GetTracer implement: TracerHolder
+func (srv *Service) GetTracer() opentracing.Tracer {
+	return srv.Tracer
 }

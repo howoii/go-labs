@@ -6,6 +6,7 @@ import (
 	"os"
 
 	conf "github.com/labs/tracing/config"
+	"github.com/labs/tracing/util"
 	"github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
 	"github.com/opentracing/opentracing-go/log"
@@ -21,7 +22,10 @@ func main() {
 	}
 	helloTo := os.Args[1]
 
-	tracer, closer := initJaeger("hello-world")
+	tracer, closer := util.InitTracer("hello-world")
+	if tracer == nil {
+		panic("ERROR: init tracer failed")
+	}
 	opentracing.SetGlobalTracer(tracer) //设置全局tracer，StartSpanFromContext里会用到
 	defer closer.Close()
 

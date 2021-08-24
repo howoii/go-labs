@@ -51,7 +51,10 @@ func handlerWrap(th TracerHolder, handler httpMethodFunc) http.HandlerFunc {
 		}
 		defer span.Finish()
 
-		err = handler(w, r)
+		ctx := opentracing.ContextWithSpan(r.Context(), span)
+		nr := r.WithContext(ctx)
+
+		err = handler(w, nr)
 		if err != nil {
 			ext.LogError(span, err)
 		}

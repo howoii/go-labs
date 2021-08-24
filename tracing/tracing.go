@@ -17,10 +17,11 @@ const (
 )
 
 func main() {
-	if len(os.Args) != 2 {
-		panic("ERROR: Expecting one argument")
+	if len(os.Args) != 3 {
+		panic("ERROR: Expecting two argument")
 	}
-	helloTo := os.Args[1]
+	greeting := os.Args[1]
+	helloTo := os.Args[2]
 
 	tracer, closer := util.InitTracer("hello-world")
 	if tracer == nil {
@@ -31,6 +32,7 @@ func main() {
 
 	span := tracer.StartSpan("say_hello")
 	span.SetTag("hello-to", helloTo)
+	span.SetBaggageItem("greeting", greeting)
 
 	ctx := opentracing.ContextWithSpan(context.Background(), span)
 	helloStr := formatString(ctx, helloTo)

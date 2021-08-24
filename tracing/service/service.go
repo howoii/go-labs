@@ -34,8 +34,15 @@ func (srv *Service) FormatHandler(w http.ResponseWriter, r *http.Request) error 
 	if err := r.ParseForm(); err != nil {
 		return err
 	}
+
+	ctx := r.Context()
+	span := opentracing.SpanFromContext(ctx)
+	greeting := span.BaggageItem("greeting")
+	if greeting == "" {
+		greeting = "Hello"
+	}
 	helloTo := r.FormValue("helloTo")
-	helloStr := fmt.Sprintf("Hello, %s!", helloTo)
+	helloStr := fmt.Sprintf("%s, %s!", greeting, helloTo)
 
 	_, err := w.Write([]byte(helloStr))
 	return err

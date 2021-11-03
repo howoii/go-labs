@@ -12,7 +12,7 @@ import (
 
 const (
 	driver = "mysql"
-	source = "root:haiwei@100@tcp(localhost:3306)/db_redeem?parseTime=1"
+	source = "root:123456@tcp(localhost:3306)/db_redeem?parseTime=1"
 )
 
 type AccountInfo struct {

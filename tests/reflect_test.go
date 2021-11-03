@@ -224,3 +224,21 @@ func TestReflectValue(t *testing.T) {
 	fmt.Println(as.Kind())
 	fmt.Println(as.Elem())
 }
+
+func typeSwitch(i interface{}) {
+	switch v := i.(type) {
+	case []int:
+		fmt.Println(v, v == nil)
+	case nil:
+		fmt.Println("nil")
+	default:
+		fmt.Println("unexpected")
+	}
+}
+
+func TestReflectNilType(t *testing.T) {
+	var is []int
+	typeSwitch(is)
+	typeSwitch(nil)
+	typeSwitch([]int{})
+}

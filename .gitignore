@@ -1,4 +1,4 @@
 vendor/
 .idea/
-.DS_Store
+.DS_Storego.sum
 go.sum

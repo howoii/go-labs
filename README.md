@@ -16,3 +16,5 @@
   一个简单的 http 接口并发测试程序。
 * [tracing](https://github.com/howoii/go-labs/tree/main/tracing)
   分布式链路追踪库 [jaeger](https://github.com/jaegertracing/jaeger) 使用示例。
+* [email](https://github.com/howoii/go-labs/tree/main/email)
+  golang 发送邮件示例

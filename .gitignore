@@ -2,3 +2,4 @@ vendor/
 .idea/
 .DS_Storego.sum
 go.sum
+/grpc/ca

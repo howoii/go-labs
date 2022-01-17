@@ -2,20 +2,46 @@ package main
 
 import (
 	"context"
+	"crypto/tls"
+	"crypto/x509"
 	"errors"
 	"io"
+	"io/ioutil"
 	"log"
 
 	pb "github.com/labs/grpc/proto"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 )
 
 const (
-	port = "5100"
+	port   = "5100"
+	caRoot = "../ca/"
 )
 
 func main() {
-	conn, err := grpc.Dial(":"+port, grpc.WithInsecure())
+	cert, err := tls.LoadX509KeyPair(caRoot+"client.crt", caRoot+"client.key")
+	if err != nil {
+		log.Fatalf("tls.LoadX509KeyPair err: %v", err)
+	}
+
+	certPool := x509.NewCertPool()
+	ca, err := ioutil.ReadFile(caRoot + "ca.crt")
+	if err != nil {
+		log.Fatalf("ioutil.ReadFile err: %v", err)
+	}
+
+	if ok := certPool.AppendCertsFromPEM(ca); !ok {
+		log.Fatalf("add cert failed")
+	}
+
+	creds := credentials.NewTLS(&tls.Config{
+		Certificates: []tls.Certificate{cert},
+		ServerName:   "grpc.server.io",
+		RootCAs:      certPool,
+	})
+
+	conn, err := grpc.Dial(":"+port, grpc.WithTransportCredentials(creds))
 	if err != nil {
 		log.Fatalf("grpc.Dail failed: %v", err)
 	}

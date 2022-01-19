@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"runtime/debug"
+	"sync"
 	"testing"
 )
 
@@ -34,7 +36,27 @@ func PanicGoRoutine() {
 	fmt.Println("main goroutine finished without panic")
 }
 
+func doSomethingWillPanic() {
+	var m map[int]int
+	m[1] = 1
+}
+
+func PanicStack() {
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func() {
+		defer func() {
+			if p := recover(); p != nil {
+				err := fmt.Errorf("%v", p)
+				fmt.Println(err, string(debug.Stack()))
+			}
+			wg.Done()
+		}()
+		doSomethingWillPanic()
+	}()
+	wg.Wait()
+}
+
 func TestPanic(t *testing.T) {
-	PanicFunc()
-	PanicGoRoutine()
+	PanicStack()
 }

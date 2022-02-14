@@ -18,5 +18,7 @@
   分布式链路追踪库 [jaeger](https://github.com/jaegertracing/jaeger) 使用示例。
 * [email](https://github.com/howoii/go-labs/tree/main/email)
   golang 发送邮件示例
+* [grpc](https://github.com/howoii/go-labs/tree/main/grpc)
+  golang grpc 三种流式调用的使用示例
 * [ds](https://github.com/howoii/go-labs/tree/main/ds)
   常用数据结构的golang实现

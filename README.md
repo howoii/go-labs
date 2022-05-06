@@ -24,5 +24,5 @@
   常用数据结构的golang实现
 * [ratelimit](https://github.com/howoii/go-labs/tree/main/ratelimit)
   使用令牌桶和漏桶实现的限流算法
-* [redis-bench](https://github.com/howoii/go-labs/tree/main/redis-bench))
+* [redis-bench](https://github.com/howoii/go-labs/tree/main/redis-bench)
   一个简单的Redis Cluster和Redis Ring压测工具

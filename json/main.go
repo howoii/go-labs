@@ -11,14 +11,14 @@ import (
 
 type Data struct {
 	Str   string  `json:"str"`
-	Id    int     `json:"id"`
+	Id    int64   `json:"id"`
 	SubId int     `json:"sub_id"`
 	Value float32 `json:"value"`
 }
 
 func (e Data) MarshalLogObject(enc zapcore.ObjectEncoder) error {
 	enc.AddString("str", e.Str)
-	enc.AddInt("id", e.Id)
+	enc.AddInt64("id", e.Id)
 	enc.AddInt("sub_id", e.SubId)
 	enc.AddFloat32("value", e.Value)
 	return nil
@@ -43,7 +43,7 @@ func main() {
 	logger := zap.NewExample()
 	d1 := Data{
 		Str:   "d1",
-		Id:    0,
+		Id:    35876901400,
 		Value: 1.1,
 	}
 	d2 := DataDup{

@@ -26,3 +26,5 @@
   使用令牌桶和漏桶实现的限流算法
 * [redis-bench](https://github.com/howoii/go-labs/tree/main/redis-bench)
   一个简单的Redis Cluster和Redis Ring压测工具
+* [asm](https://github.com/howoii/go-labs/tree/main/asm)
+  golang 汇编的使用示例

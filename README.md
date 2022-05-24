@@ -28,3 +28,5 @@
   一个简单的Redis Cluster和Redis Ring压测工具
 * [asm](https://github.com/howoii/go-labs/tree/main/asm)
   golang 汇编的使用示例
+* [cgo](https://github.com/howoii/go-labs/tree/main/cgo)
+  golang CGO的使用示例

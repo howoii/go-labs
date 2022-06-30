@@ -1,0 +1,421 @@
+     0  *ast.File {
+     1  .  Package: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:1:1
+     2  .  Name: *ast.Ident {
+     3  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:1:9
+     4  .  .  Name: "main"
+     5  .  }
+     6  .  Decls: []ast.Decl (len = 6) {
+     7  .  .  0: *ast.GenDecl {
+     8  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:3:1
+     9  .  .  .  Tok: import
+    10  .  .  .  Lparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:3:8
+    11  .  .  .  Specs: []ast.Spec (len = 1) {
+    12  .  .  .  .  0: *ast.ImportSpec {
+    13  .  .  .  .  .  Path: *ast.BasicLit {
+    14  .  .  .  .  .  .  ValuePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:4:2
+    15  .  .  .  .  .  .  Kind: STRING
+    16  .  .  .  .  .  .  Value: "\"fmt\""
+    17  .  .  .  .  .  }
+    18  .  .  .  .  .  EndPos: -
+    19  .  .  .  .  }
+    20  .  .  .  }
+    21  .  .  .  Rparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:5:1
+    22  .  .  }
+    23  .  .  1: *ast.GenDecl {
+    24  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:7:1
+    25  .  .  .  Tok: type
+    26  .  .  .  Lparen: -
+    27  .  .  .  Specs: []ast.Spec (len = 1) {
+    28  .  .  .  .  0: *ast.TypeSpec {
+    29  .  .  .  .  .  Name: *ast.Ident {
+    30  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:7:6
+    31  .  .  .  .  .  .  Name: "Person"
+    32  .  .  .  .  .  .  Obj: *ast.Object {
+    33  .  .  .  .  .  .  .  Kind: type
+    34  .  .  .  .  .  .  .  Name: "Person"
+    35  .  .  .  .  .  .  .  Decl: *(obj @ 28)
+    36  .  .  .  .  .  .  }
+    37  .  .  .  .  .  }
+    38  .  .  .  .  .  Assign: -
+    39  .  .  .  .  .  Type: *ast.StructType {
+    40  .  .  .  .  .  .  Struct: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:7:13
+    41  .  .  .  .  .  .  Fields: *ast.FieldList {
+    42  .  .  .  .  .  .  .  Opening: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:7:20
+    43  .  .  .  .  .  .  .  List: []*ast.Field (len = 2) {
+    44  .  .  .  .  .  .  .  .  0: *ast.Field {
+    45  .  .  .  .  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+    46  .  .  .  .  .  .  .  .  .  .  0: *ast.Ident {
+    47  .  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:8:2
+    48  .  .  .  .  .  .  .  .  .  .  .  Name: "Name"
+    49  .  .  .  .  .  .  .  .  .  .  .  Obj: *ast.Object {
+    50  .  .  .  .  .  .  .  .  .  .  .  .  Kind: var
+    51  .  .  .  .  .  .  .  .  .  .  .  .  Name: "Name"
+    52  .  .  .  .  .  .  .  .  .  .  .  .  Decl: *(obj @ 44)
+    53  .  .  .  .  .  .  .  .  .  .  .  }
+    54  .  .  .  .  .  .  .  .  .  .  }
+    55  .  .  .  .  .  .  .  .  .  }
+    56  .  .  .  .  .  .  .  .  .  Type: *ast.Ident {
+    57  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:8:7
+    58  .  .  .  .  .  .  .  .  .  .  Name: "string"
+    59  .  .  .  .  .  .  .  .  .  }
+    60  .  .  .  .  .  .  .  .  }
+    61  .  .  .  .  .  .  .  .  1: *ast.Field {
+    62  .  .  .  .  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+    63  .  .  .  .  .  .  .  .  .  .  0: *ast.Ident {
+    64  .  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:9:2
+    65  .  .  .  .  .  .  .  .  .  .  .  Name: "Age"
+    66  .  .  .  .  .  .  .  .  .  .  .  Obj: *ast.Object {
+    67  .  .  .  .  .  .  .  .  .  .  .  .  Kind: var
+    68  .  .  .  .  .  .  .  .  .  .  .  .  Name: "Age"
+    69  .  .  .  .  .  .  .  .  .  .  .  .  Decl: *(obj @ 61)
+    70  .  .  .  .  .  .  .  .  .  .  .  }
+    71  .  .  .  .  .  .  .  .  .  .  }
+    72  .  .  .  .  .  .  .  .  .  }
+    73  .  .  .  .  .  .  .  .  .  Type: *ast.Ident {
+    74  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:9:7
+    75  .  .  .  .  .  .  .  .  .  .  Name: "int"
+    76  .  .  .  .  .  .  .  .  .  }
+    77  .  .  .  .  .  .  .  .  }
+    78  .  .  .  .  .  .  .  }
+    79  .  .  .  .  .  .  .  Closing: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:10:1
+    80  .  .  .  .  .  .  }
+    81  .  .  .  .  .  .  Incomplete: false
+    82  .  .  .  .  .  }
+    83  .  .  .  .  }
+    84  .  .  .  }
+    85  .  .  .  Rparen: -
+    86  .  .  }
+    87  .  .  2: *ast.FuncDecl {
+    88  .  .  .  Recv: *ast.FieldList {
+    89  .  .  .  .  Opening: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:6
+    90  .  .  .  .  List: []*ast.Field (len = 1) {
+    91  .  .  .  .  .  0: *ast.Field {
+    92  .  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+    93  .  .  .  .  .  .  .  0: *ast.Ident {
+    94  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:7
+    95  .  .  .  .  .  .  .  .  Name: "p"
+    96  .  .  .  .  .  .  .  .  Obj: *ast.Object {
+    97  .  .  .  .  .  .  .  .  .  Kind: var
+    98  .  .  .  .  .  .  .  .  .  Name: "p"
+    99  .  .  .  .  .  .  .  .  .  Decl: *(obj @ 91)
+   100  .  .  .  .  .  .  .  .  }
+   101  .  .  .  .  .  .  .  }
+   102  .  .  .  .  .  .  }
+   103  .  .  .  .  .  .  Type: *ast.Ident {
+   104  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:9
+   105  .  .  .  .  .  .  .  Name: "Person"
+   106  .  .  .  .  .  .  .  Obj: *(obj @ 32)
+   107  .  .  .  .  .  .  }
+   108  .  .  .  .  .  }
+   109  .  .  .  .  }
+   110  .  .  .  .  Closing: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:15
+   111  .  .  .  }
+   112  .  .  .  Name: *ast.Ident {
+   113  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:17
+   114  .  .  .  .  Name: "Say"
+   115  .  .  .  }
+   116  .  .  .  Type: *ast.FuncType {
+   117  .  .  .  .  Func: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:1
+   118  .  .  .  .  Params: *ast.FieldList {
+   119  .  .  .  .  .  Opening: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:20
+   120  .  .  .  .  .  List: []*ast.Field (len = 1) {
+   121  .  .  .  .  .  .  0: *ast.Field {
+   122  .  .  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+   123  .  .  .  .  .  .  .  .  0: *ast.Ident {
+   124  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:21
+   125  .  .  .  .  .  .  .  .  .  Name: "to"
+   126  .  .  .  .  .  .  .  .  .  Obj: *ast.Object {
+   127  .  .  .  .  .  .  .  .  .  .  Kind: var
+   128  .  .  .  .  .  .  .  .  .  .  Name: "to"
+   129  .  .  .  .  .  .  .  .  .  .  Decl: *(obj @ 121)
+   130  .  .  .  .  .  .  .  .  .  }
+   131  .  .  .  .  .  .  .  .  }
+   132  .  .  .  .  .  .  .  }
+   133  .  .  .  .  .  .  .  Type: *ast.Ident {
+   134  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:24
+   135  .  .  .  .  .  .  .  .  Name: "string"
+   136  .  .  .  .  .  .  .  }
+   137  .  .  .  .  .  .  }
+   138  .  .  .  .  .  }
+   139  .  .  .  .  .  Closing: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:30
+   140  .  .  .  .  }
+   141  .  .  .  .  Results: *ast.FieldList {
+   142  .  .  .  .  .  Opening: -
+   143  .  .  .  .  .  List: []*ast.Field (len = 1) {
+   144  .  .  .  .  .  .  0: *ast.Field {
+   145  .  .  .  .  .  .  .  Type: *ast.Ident {
+   146  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:32
+   147  .  .  .  .  .  .  .  .  Name: "string"
+   148  .  .  .  .  .  .  .  }
+   149  .  .  .  .  .  .  }
+   150  .  .  .  .  .  }
+   151  .  .  .  .  .  Closing: -
+   152  .  .  .  .  }
+   153  .  .  .  }
+   154  .  .  .  Body: *ast.BlockStmt {
+   155  .  .  .  .  Lbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:12:39
+   156  .  .  .  .  List: []ast.Stmt (len = 2) {
+   157  .  .  .  .  .  0: *ast.ExprStmt {
+   158  .  .  .  .  .  .  X: *ast.CallExpr {
+   159  .  .  .  .  .  .  .  Fun: *ast.SelectorExpr {
+   160  .  .  .  .  .  .  .  .  X: *ast.Ident {
+   161  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:2
+   162  .  .  .  .  .  .  .  .  .  Name: "fmt"
+   163  .  .  .  .  .  .  .  .  }
+   164  .  .  .  .  .  .  .  .  Sel: *ast.Ident {
+   165  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:6
+   166  .  .  .  .  .  .  .  .  .  Name: "Printf"
+   167  .  .  .  .  .  .  .  .  }
+   168  .  .  .  .  .  .  .  }
+   169  .  .  .  .  .  .  .  Lparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:12
+   170  .  .  .  .  .  .  .  Args: []ast.Expr (len = 3) {
+   171  .  .  .  .  .  .  .  .  0: *ast.BasicLit {
+   172  .  .  .  .  .  .  .  .  .  ValuePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:13
+   173  .  .  .  .  .  .  .  .  .  Kind: STRING
+   174  .  .  .  .  .  .  .  .  .  Value: "\"hi %s, i'm %s\\n\""
+   175  .  .  .  .  .  .  .  .  }
+   176  .  .  .  .  .  .  .  .  1: *ast.Ident {
+   177  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:32
+   178  .  .  .  .  .  .  .  .  .  Name: "to"
+   179  .  .  .  .  .  .  .  .  .  Obj: *(obj @ 126)
+   180  .  .  .  .  .  .  .  .  }
+   181  .  .  .  .  .  .  .  .  2: *ast.SelectorExpr {
+   182  .  .  .  .  .  .  .  .  .  X: *ast.Ident {
+   183  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:36
+   184  .  .  .  .  .  .  .  .  .  .  Name: "p"
+   185  .  .  .  .  .  .  .  .  .  .  Obj: *(obj @ 96)
+   186  .  .  .  .  .  .  .  .  .  }
+   187  .  .  .  .  .  .  .  .  .  Sel: *ast.Ident {
+   188  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:38
+   189  .  .  .  .  .  .  .  .  .  .  Name: "Name"
+   190  .  .  .  .  .  .  .  .  .  }
+   191  .  .  .  .  .  .  .  .  }
+   192  .  .  .  .  .  .  .  }
+   193  .  .  .  .  .  .  .  Ellipsis: -
+   194  .  .  .  .  .  .  .  Rparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:13:42
+   195  .  .  .  .  .  .  }
+   196  .  .  .  .  .  }
+   197  .  .  .  .  .  1: *ast.ReturnStmt {
+   198  .  .  .  .  .  .  Return: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:14:2
+   199  .  .  .  .  .  .  Results: []ast.Expr (len = 1) {
+   200  .  .  .  .  .  .  .  0: *ast.SelectorExpr {
+   201  .  .  .  .  .  .  .  .  X: *ast.Ident {
+   202  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:14:9
+   203  .  .  .  .  .  .  .  .  .  Name: "p"
+   204  .  .  .  .  .  .  .  .  .  Obj: *(obj @ 96)
+   205  .  .  .  .  .  .  .  .  }
+   206  .  .  .  .  .  .  .  .  Sel: *ast.Ident {
+   207  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:14:11
+   208  .  .  .  .  .  .  .  .  .  Name: "Name"
+   209  .  .  .  .  .  .  .  .  }
+   210  .  .  .  .  .  .  .  }
+   211  .  .  .  .  .  .  }
+   212  .  .  .  .  .  }
+   213  .  .  .  .  }
+   214  .  .  .  .  Rbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:15:1
+   215  .  .  .  }
+   216  .  .  }
+   217  .  .  3: *ast.GenDecl {
+   218  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:17:1
+   219  .  .  .  Tok: var
+   220  .  .  .  Lparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:17:5
+   221  .  .  .  Specs: []ast.Spec (len = 2) {
+   222  .  .  .  .  0: *ast.ValueSpec {
+   223  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+   224  .  .  .  .  .  .  0: *ast.Ident {
+   225  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:18:2
+   226  .  .  .  .  .  .  .  Name: "alice"
+   227  .  .  .  .  .  .  .  Obj: *ast.Object {
+   228  .  .  .  .  .  .  .  .  Kind: var
+   229  .  .  .  .  .  .  .  .  Name: "alice"
+   230  .  .  .  .  .  .  .  .  Decl: *(obj @ 222)
+   231  .  .  .  .  .  .  .  .  Data: 0
+   232  .  .  .  .  .  .  .  }
+   233  .  .  .  .  .  .  }
+   234  .  .  .  .  .  }
+   235  .  .  .  .  .  Type: *ast.Ident {
+   236  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:18:8
+   237  .  .  .  .  .  .  Name: "Person"
+   238  .  .  .  .  .  .  Obj: *(obj @ 32)
+   239  .  .  .  .  .  }
+   240  .  .  .  .  }
+   241  .  .  .  .  1: *ast.ValueSpec {
+   242  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+   243  .  .  .  .  .  .  0: *ast.Ident {
+   244  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:19:2
+   245  .  .  .  .  .  .  .  Name: "bob"
+   246  .  .  .  .  .  .  .  Obj: *ast.Object {
+   247  .  .  .  .  .  .  .  .  Kind: var
+   248  .  .  .  .  .  .  .  .  Name: "bob"
+   249  .  .  .  .  .  .  .  .  Decl: *(obj @ 241)
+   250  .  .  .  .  .  .  .  .  Data: 1
+   251  .  .  .  .  .  .  .  }
+   252  .  .  .  .  .  .  }
+   253  .  .  .  .  .  }
+   254  .  .  .  .  .  Type: *ast.Ident {
+   255  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:19:8
+   256  .  .  .  .  .  .  Name: "Person"
+   257  .  .  .  .  .  .  Obj: *(obj @ 32)
+   258  .  .  .  .  .  }
+   259  .  .  .  .  }
+   260  .  .  .  }
+   261  .  .  .  Rparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:20:1
+   262  .  .  }
+   263  .  .  4: *ast.GenDecl {
+   264  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:22:1
+   265  .  .  .  Tok: const
+   266  .  .  .  Lparen: -
+   267  .  .  .  Specs: []ast.Spec (len = 1) {
+   268  .  .  .  .  0: *ast.ValueSpec {
+   269  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+   270  .  .  .  .  .  .  0: *ast.Ident {
+   271  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:22:7
+   272  .  .  .  .  .  .  .  Name: "Max"
+   273  .  .  .  .  .  .  .  Obj: *ast.Object {
+   274  .  .  .  .  .  .  .  .  Kind: const
+   275  .  .  .  .  .  .  .  .  Name: "Max"
+   276  .  .  .  .  .  .  .  .  Decl: *(obj @ 268)
+   277  .  .  .  .  .  .  .  .  Data: 0
+   278  .  .  .  .  .  .  .  }
+   279  .  .  .  .  .  .  }
+   280  .  .  .  .  .  }
+   281  .  .  .  .  .  Values: []ast.Expr (len = 1) {
+   282  .  .  .  .  .  .  0: *ast.BasicLit {
+   283  .  .  .  .  .  .  .  ValuePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:22:13
+   284  .  .  .  .  .  .  .  Kind: INT
+   285  .  .  .  .  .  .  .  Value: "100"
+   286  .  .  .  .  .  .  }
+   287  .  .  .  .  .  }
+   288  .  .  .  .  }
+   289  .  .  .  }
+   290  .  .  .  Rparen: -
+   291  .  .  }
+   292  .  .  5: *ast.FuncDecl {
+   293  .  .  .  Name: *ast.Ident {
+   294  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:24:6
+   295  .  .  .  .  Name: "main"
+   296  .  .  .  .  Obj: *ast.Object {
+   297  .  .  .  .  .  Kind: func
+   298  .  .  .  .  .  Name: "main"
+   299  .  .  .  .  .  Decl: *(obj @ 292)
+   300  .  .  .  .  }
+   301  .  .  .  }
+   302  .  .  .  Type: *ast.FuncType {
+   303  .  .  .  .  Func: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:24:1
+   304  .  .  .  .  Params: *ast.FieldList {
+   305  .  .  .  .  .  Opening: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:24:10
+   306  .  .  .  .  .  Closing: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:24:11
+   307  .  .  .  .  }
+   308  .  .  .  }
+   309  .  .  .  Body: *ast.BlockStmt {
+   310  .  .  .  .  Lbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:24:13
+   311  .  .  .  .  List: []ast.Stmt (len = 2) {
+   312  .  .  .  .  .  0: *ast.AssignStmt {
+   313  .  .  .  .  .  .  Lhs: []ast.Expr (len = 1) {
+   314  .  .  .  .  .  .  .  0: *ast.SelectorExpr {
+   315  .  .  .  .  .  .  .  .  X: *ast.Ident {
+   316  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:25:2
+   317  .  .  .  .  .  .  .  .  .  Name: "alice"
+   318  .  .  .  .  .  .  .  .  .  Obj: *(obj @ 227)
+   319  .  .  .  .  .  .  .  .  }
+   320  .  .  .  .  .  .  .  .  Sel: *ast.Ident {
+   321  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:25:8
+   322  .  .  .  .  .  .  .  .  .  Name: "Name"
+   323  .  .  .  .  .  .  .  .  }
+   324  .  .  .  .  .  .  .  }
+   325  .  .  .  .  .  .  }
+   326  .  .  .  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:25:13
+   327  .  .  .  .  .  .  Tok: =
+   328  .  .  .  .  .  .  Rhs: []ast.Expr (len = 1) {
+   329  .  .  .  .  .  .  .  0: *ast.BasicLit {
+   330  .  .  .  .  .  .  .  .  ValuePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:25:15
+   331  .  .  .  .  .  .  .  .  Kind: STRING
+   332  .  .  .  .  .  .  .  .  Value: "\"Alice\""
+   333  .  .  .  .  .  .  .  }
+   334  .  .  .  .  .  .  }
+   335  .  .  .  .  .  }
+   336  .  .  .  .  .  1: *ast.IfStmt {
+   337  .  .  .  .  .  .  If: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:27:2
+   338  .  .  .  .  .  .  Cond: *ast.BinaryExpr {
+   339  .  .  .  .  .  .  .  X: *ast.SelectorExpr {
+   340  .  .  .  .  .  .  .  .  X: *ast.Ident {
+   341  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:27:5
+   342  .  .  .  .  .  .  .  .  .  Name: "bob"
+   343  .  .  .  .  .  .  .  .  .  Obj: *(obj @ 246)
+   344  .  .  .  .  .  .  .  .  }
+   345  .  .  .  .  .  .  .  .  Sel: *ast.Ident {
+   346  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:27:9
+   347  .  .  .  .  .  .  .  .  .  Name: "Name"
+   348  .  .  .  .  .  .  .  .  }
+   349  .  .  .  .  .  .  .  }
+   350  .  .  .  .  .  .  .  OpPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:27:14
+   351  .  .  .  .  .  .  .  Op: !=
+   352  .  .  .  .  .  .  .  Y: *ast.BasicLit {
+   353  .  .  .  .  .  .  .  .  ValuePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:27:17
+   354  .  .  .  .  .  .  .  .  Kind: STRING
+   355  .  .  .  .  .  .  .  .  Value: "\"\""
+   356  .  .  .  .  .  .  .  }
+   357  .  .  .  .  .  .  }
+   358  .  .  .  .  .  .  Body: *ast.BlockStmt {
+   359  .  .  .  .  .  .  .  Lbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:27:20
+   360  .  .  .  .  .  .  .  List: []ast.Stmt (len = 1) {
+   361  .  .  .  .  .  .  .  .  0: *ast.ExprStmt {
+   362  .  .  .  .  .  .  .  .  .  X: *ast.CallExpr {
+   363  .  .  .  .  .  .  .  .  .  .  Fun: *ast.SelectorExpr {
+   364  .  .  .  .  .  .  .  .  .  .  .  X: *ast.Ident {
+   365  .  .  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:28:3
+   366  .  .  .  .  .  .  .  .  .  .  .  .  Name: "alice"
+   367  .  .  .  .  .  .  .  .  .  .  .  .  Obj: *(obj @ 227)
+   368  .  .  .  .  .  .  .  .  .  .  .  }
+   369  .  .  .  .  .  .  .  .  .  .  .  Sel: *ast.Ident {
+   370  .  .  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:28:9
+   371  .  .  .  .  .  .  .  .  .  .  .  .  Name: "Say"
+   372  .  .  .  .  .  .  .  .  .  .  .  }
+   373  .  .  .  .  .  .  .  .  .  .  }
+   374  .  .  .  .  .  .  .  .  .  .  Lparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:28:12
+   375  .  .  .  .  .  .  .  .  .  .  Args: []ast.Expr (len = 1) {
+   376  .  .  .  .  .  .  .  .  .  .  .  0: *ast.SelectorExpr {
+   377  .  .  .  .  .  .  .  .  .  .  .  .  X: *ast.Ident {
+   378  .  .  .  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:28:13
+   379  .  .  .  .  .  .  .  .  .  .  .  .  .  Name: "bob"
+   380  .  .  .  .  .  .  .  .  .  .  .  .  .  Obj: *(obj @ 246)
+   381  .  .  .  .  .  .  .  .  .  .  .  .  }
+   382  .  .  .  .  .  .  .  .  .  .  .  .  Sel: *ast.Ident {
+   383  .  .  .  .  .  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:28:17
+   384  .  .  .  .  .  .  .  .  .  .  .  .  .  Name: "Name"
+   385  .  .  .  .  .  .  .  .  .  .  .  .  }
+   386  .  .  .  .  .  .  .  .  .  .  .  }
+   387  .  .  .  .  .  .  .  .  .  .  }
+   388  .  .  .  .  .  .  .  .  .  .  Ellipsis: -
+   389  .  .  .  .  .  .  .  .  .  .  Rparen: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:28:21
+   390  .  .  .  .  .  .  .  .  .  }
+   391  .  .  .  .  .  .  .  .  }
+   392  .  .  .  .  .  .  .  }
+   393  .  .  .  .  .  .  .  Rbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:29:2
+   394  .  .  .  .  .  .  }
+   395  .  .  .  .  .  }
+   396  .  .  .  .  }
+   397  .  .  .  .  Rbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src.go:30:1
+   398  .  .  .  }
+   399  .  .  }
+   400  .  }
+   401  .  Scope: *ast.Scope {
+   402  .  .  Objects: map[string]*ast.Object (len = 5) {
+   403  .  .  .  "Person": *(obj @ 32)
+   404  .  .  .  "alice": *(obj @ 227)
+   405  .  .  .  "bob": *(obj @ 246)
+   406  .  .  .  "Max": *(obj @ 273)
+   407  .  .  .  "main": *(obj @ 296)
+   408  .  .  }
+   409  .  }
+   410  .  Imports: []*ast.ImportSpec (len = 1) {
+   411  .  .  0: *(obj @ 12)
+   412  .  }
+   413  .  Unresolved: []*ast.Ident (len = 5) {
+   414  .  .  0: *(obj @ 56)
+   415  .  .  1: *(obj @ 73)
+   416  .  .  2: *(obj @ 133)
+   417  .  .  3: *(obj @ 145)
+   418  .  .  4: *(obj @ 160)
+   419  .  }
+   420  }

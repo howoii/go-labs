@@ -1,0 +1,134 @@
+     0  *ast.File {
+     1  .  Package: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:1:1
+     2  .  Name: *ast.Ident {
+     3  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:1:9
+     4  .  .  Name: "source"
+     5  .  }
+     6  .  Decls: []ast.Decl (len = 3) {
+     7  .  .  0: *ast.GenDecl {
+     8  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:3:1
+     9  .  .  .  Tok: type
+    10  .  .  .  Lparen: -
+    11  .  .  .  Specs: []ast.Spec (len = 1) {
+    12  .  .  .  .  0: *ast.TypeSpec {
+    13  .  .  .  .  .  Name: *ast.Ident {
+    14  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:3:6
+    15  .  .  .  .  .  .  Name: "Counter"
+    16  .  .  .  .  .  .  Obj: *ast.Object {
+    17  .  .  .  .  .  .  .  Kind: type
+    18  .  .  .  .  .  .  .  Name: "Counter"
+    19  .  .  .  .  .  .  .  Decl: *(obj @ 12)
+    20  .  .  .  .  .  .  }
+    21  .  .  .  .  .  }
+    22  .  .  .  .  .  Assign: -
+    23  .  .  .  .  .  Type: *ast.Ident {
+    24  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:3:14
+    25  .  .  .  .  .  .  Name: "int"
+    26  .  .  .  .  .  }
+    27  .  .  .  .  }
+    28  .  .  .  }
+    29  .  .  .  Rparen: -
+    30  .  .  }
+    31  .  .  1: *ast.GenDecl {
+    32  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:5:1
+    33  .  .  .  Tok: var
+    34  .  .  .  Lparen: -
+    35  .  .  .  Specs: []ast.Spec (len = 1) {
+    36  .  .  .  .  0: *ast.ValueSpec {
+    37  .  .  .  .  .  Names: []*ast.Ident (len = 1) {
+    38  .  .  .  .  .  .  0: *ast.Ident {
+    39  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:5:5
+    40  .  .  .  .  .  .  .  Name: "c"
+    41  .  .  .  .  .  .  .  Obj: *ast.Object {
+    42  .  .  .  .  .  .  .  .  Kind: var
+    43  .  .  .  .  .  .  .  .  Name: "c"
+    44  .  .  .  .  .  .  .  .  Decl: *(obj @ 36)
+    45  .  .  .  .  .  .  .  .  Data: 0
+    46  .  .  .  .  .  .  .  }
+    47  .  .  .  .  .  .  }
+    48  .  .  .  .  .  }
+    49  .  .  .  .  .  Type: *ast.Ident {
+    50  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:5:7
+    51  .  .  .  .  .  .  Name: "Counter"
+    52  .  .  .  .  .  .  Obj: *(obj @ 16)
+    53  .  .  .  .  .  }
+    54  .  .  .  .  }
+    55  .  .  .  }
+    56  .  .  .  Rparen: -
+    57  .  .  }
+    58  .  .  2: *ast.FuncDecl {
+    59  .  .  .  Name: *ast.Ident {
+    60  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:7:6
+    61  .  .  .  .  Name: "count"
+    62  .  .  .  .  Obj: *ast.Object {
+    63  .  .  .  .  .  Kind: func
+    64  .  .  .  .  .  Name: "count"
+    65  .  .  .  .  .  Decl: *(obj @ 58)
+    66  .  .  .  .  }
+    67  .  .  .  }
+    68  .  .  .  Type: *ast.FuncType {
+    69  .  .  .  .  Func: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:7:1
+    70  .  .  .  .  Params: *ast.FieldList {
+    71  .  .  .  .  .  Opening: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:7:11
+    72  .  .  .  .  .  Closing: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:7:12
+    73  .  .  .  .  }
+    74  .  .  .  }
+    75  .  .  .  Body: *ast.BlockStmt {
+    76  .  .  .  .  Lbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:7:14
+    77  .  .  .  .  List: []ast.Stmt (len = 2) {
+    78  .  .  .  .  .  0: *ast.AssignStmt {
+    79  .  .  .  .  .  .  Lhs: []ast.Expr (len = 1) {
+    80  .  .  .  .  .  .  .  0: *ast.Ident {
+    81  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:8:2
+    82  .  .  .  .  .  .  .  .  Name: "c"
+    83  .  .  .  .  .  .  .  .  Obj: *(obj @ 41)
+    84  .  .  .  .  .  .  .  }
+    85  .  .  .  .  .  .  }
+    86  .  .  .  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:8:4
+    87  .  .  .  .  .  .  Tok: +=
+    88  .  .  .  .  .  .  Rhs: []ast.Expr (len = 1) {
+    89  .  .  .  .  .  .  .  0: *ast.BasicLit {
+    90  .  .  .  .  .  .  .  .  ValuePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:8:7
+    91  .  .  .  .  .  .  .  .  Kind: INT
+    92  .  .  .  .  .  .  .  .  Value: "1"
+    93  .  .  .  .  .  .  .  }
+    94  .  .  .  .  .  .  }
+    95  .  .  .  .  .  }
+    96  .  .  .  .  .  1: *ast.AssignStmt {
+    97  .  .  .  .  .  .  Lhs: []ast.Expr (len = 1) {
+    98  .  .  .  .  .  .  .  0: *ast.Ident {
+    99  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:9:2
+   100  .  .  .  .  .  .  .  .  Name: "r"
+   101  .  .  .  .  .  .  .  .  Obj: *ast.Object {
+   102  .  .  .  .  .  .  .  .  .  Kind: var
+   103  .  .  .  .  .  .  .  .  .  Name: "r"
+   104  .  .  .  .  .  .  .  .  .  Decl: *(obj @ 96)
+   105  .  .  .  .  .  .  .  .  }
+   106  .  .  .  .  .  .  .  }
+   107  .  .  .  .  .  .  }
+   108  .  .  .  .  .  .  TokPos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:9:4
+   109  .  .  .  .  .  .  Tok: :=
+   110  .  .  .  .  .  .  Rhs: []ast.Expr (len = 1) {
+   111  .  .  .  .  .  .  .  0: *ast.Ident {
+   112  .  .  .  .  .  .  .  .  NamePos: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:9:7
+   113  .  .  .  .  .  .  .  .  Name: "c"
+   114  .  .  .  .  .  .  .  .  Obj: *(obj @ 41)
+   115  .  .  .  .  .  .  .  }
+   116  .  .  .  .  .  .  }
+   117  .  .  .  .  .  }
+   118  .  .  .  .  }
+   119  .  .  .  .  Rbrace: /Users/haiwei.zhang/Documents/go/labs/compile/parser/src/expr.go:10:1
+   120  .  .  .  }
+   121  .  .  }
+   122  .  }
+   123  .  Scope: *ast.Scope {
+   124  .  .  Objects: map[string]*ast.Object (len = 3) {
+   125  .  .  .  "Counter": *(obj @ 16)
+   126  .  .  .  "c": *(obj @ 41)
+   127  .  .  .  "count": *(obj @ 62)
+   128  .  .  }
+   129  .  }
+   130  .  Unresolved: []*ast.Ident (len = 1) {
+   131  .  .  0: *(obj @ 23)
+   132  .  }
+   133  }

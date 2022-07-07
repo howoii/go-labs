@@ -32,3 +32,5 @@
   golang CGO的使用示例
 * [udp](https://github.com/howoii/go-labs/tree/main/udp)
   golang udp的使用示例
+* [rdup](https://github.com/howoii/go-labs/tree/main/rdup)
+  用UDP实现RUDP

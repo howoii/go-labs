@@ -84,7 +84,7 @@ func (l *Listener) readLoop() {
 			}
 		}
 		if err != nil {
-			log.Printf("readFromUDP error: %v\n", err)
+			log.Printf("[ERROR] readFromUDP error: %v\n", err)
 		}
 	}
 }
@@ -94,8 +94,9 @@ func (l *Listener) writeLoop() {
 		pack := <-l.sendChan
 		_, err := l.conn.WriteToUDP(pack.data, pack.addr)
 		if err != nil {
-			log.Printf("writeToUDP error: %v\n", err)
+			log.Printf("[ERROR] writeToUDP error: %v\n", err)
 		}
+		log.Printf("[DEBUG] Send: %s\n", MessageType(pack.data[0]))
 	}
 }
 
@@ -104,23 +105,25 @@ func (l *Listener) processLoop() {
 		pack := <-l.recvChan
 		msg, err := pack.parse()
 		if err != nil {
-			log.Printf("packet parse error: %v\n", err)
+			log.Printf("[ERROR] packet parse error: %v\n", err)
 		}
+		log.Printf("[DEBUG] Recv: %s\n", msg)
+
 		switch m := msg.(type) {
 		case *HelloMessage:
 			err := l.handleNewConnection(pack.addr, m)
 			if err != nil {
-				log.Printf("process hello message error: %v\n", err)
+				log.Printf("[ERROR] process hello message error: %v\n", err)
 			}
 		case *AckMessage:
 			err := l.handleAck(pack.addr, m)
 			if err != nil {
-				log.Printf("process ack message error: %v\n", err)
+				log.Printf("[ERROR] process ack message error: %v\n", err)
 			}
 		case *DataMessage:
 			err := l.handleData(pack.addr, m)
 			if err != nil {
-				log.Printf("process data message error: %v\n", err)
+				log.Printf("[ERROR] process data message error: %v\n", err)
 			}
 		case *ByeMessage:
 			// TODO
@@ -201,7 +204,7 @@ func (l *Listener) handleData(addr *net.UDPAddr, msg *DataMessage) error {
 
 	conn.ack(msg.GetSeqID())
 	err := conn.receiveData(msg)
-	if err != nil {
+	if err == nil {
 		conn.fillRecvBuff()
 	}
 	return err

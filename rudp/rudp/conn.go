@@ -59,7 +59,6 @@ type Conn struct {
 	ackQueue map[uint32]*timeoutMessage
 
 	sendBuf chan *timeoutMessage
-
 	recvBuf chan *DataMessage
 
 	sortMu     sync.Mutex // protect following fields
@@ -226,14 +225,19 @@ func (c *Conn) ack(ackID uint32) {
 	c.sendMessage(m)
 }
 
+// chanMessage put message into listener's send channel
+func (c *Conn) chanMessage(msg Message) {
+	c.l.sendChan <- &packet{
+		addr: c.rAddr,
+		data: msg.Marshal(),
+	}
+}
+
 func (c *Conn) sendMessage(msg Message) *timeoutMessage {
 	if sm, ok := msg.(SequenceMsg); ok {
 		return c.putMessage(sm, initialTimeout)
 	}
-	c.l.sendChan <- &packet{
-		addr: c.l.addr,
-		data: msg.Marshal(),
-	}
+	c.chanMessage(msg)
 	return nil
 }
 
@@ -247,10 +251,7 @@ func (c *Conn) putMessage(m SequenceMsg, timeout time.Duration) *timeoutMessage 
 		c.sendBuf <- tm
 		return tm
 	} else {
-		c.l.sendChan <- &packet{
-			addr: c.rAddr,
-			data: m.Marshal(),
-		}
+		c.chanMessage(m)
 		c.putAckQueue(tm)
 		return tm
 	}
@@ -258,10 +259,7 @@ func (c *Conn) putMessage(m SequenceMsg, timeout time.Duration) *timeoutMessage 
 
 func (c *Conn) reSendMessage(tm *timeoutMessage) {
 	tm.timeout *= 2
-	c.l.sendChan <- &packet{
-		addr: c.rAddr,
-		data: tm.msg.Marshal(),
-	}
+	c.chanMessage(tm.msg)
 	tm.deadline = time.Now().Add(tm.timeout)
 }
 
@@ -269,10 +267,7 @@ func (c *Conn) processSendBuf() {
 	c.sendBuf = make(chan *timeoutMessage, buffSize)
 	for {
 		tm := <-c.sendBuf
-		c.l.sendChan <- &packet{
-			addr: c.rAddr,
-			data: tm.msg.Marshal(),
-		}
+		c.chanMessage(tm.msg)
 		c.putAckQueue(tm)
 	}
 }

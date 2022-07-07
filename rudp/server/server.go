@@ -3,10 +3,16 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"net"
+	"time"
 
 	"github.com/labs/rudp/rudp"
 )
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
 
 func main() {
 	l, err := rudp.Listen(":8848")
@@ -24,15 +30,22 @@ func main() {
 }
 
 func serveConnection(c net.Conn) {
+	var buf [1420]byte
+
+	serverMsg := "Server Message [%d]"
+	loop := 0
 	for {
-		_, err := c.Write([]byte("nice to meet you"))
+		loop++
+		msg := fmt.Sprintf(serverMsg, loop)
+		_, err := c.Write([]byte(msg))
 		if err != nil {
 			log.Fatal(err)
 		}
-		var buf [1420]byte
-		_, err = c.Read(buf[:])
+		fmt.Printf("[%s] Send: %s\n", c.RemoteAddr(), msg)
+		n, err := c.Read(buf[:])
 		if err != nil {
 			log.Fatal(err)
 		}
+		fmt.Printf("[%s] Recv: %s\n", c.RemoteAddr(), string(buf[:n]))
 	}
 }

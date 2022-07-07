@@ -11,6 +11,13 @@ type packet struct {
 	data []byte
 }
 
+func ParsePacket(data []byte) (Message, error) {
+	p := &packet{
+		data: data,
+	}
+	return p.parse()
+}
+
 func (p *packet) parse() (Message, error) {
 	if len(p.data) < 1 {
 		return nil, errors.New("packet: empty packet is not valid")

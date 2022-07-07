@@ -3,6 +3,7 @@ package rudp
 import (
 	"encoding/binary"
 	"errors"
+	"fmt"
 	"time"
 )
 
@@ -13,10 +14,27 @@ const (
 	messageTypeBye
 )
 
+type MessageType uint8
+
+func (m MessageType) String() string {
+	switch uint8(m) {
+	case messageTypeHello:
+		return "HELLO"
+	case messageTypeAck:
+		return "ACK"
+	case messageTypeData:
+		return "DATA"
+	case messageTypeBye:
+		return "BYE"
+	}
+	return ""
+}
+
 type Message interface {
 	Type() uint8
 	Marshal() []byte
 	Unmarshal([]byte) error
+	String() string
 }
 
 type SequenceMsg interface {
@@ -76,6 +94,10 @@ func (m *HelloMessage) Unmarshal(data []byte) error {
 	return nil
 }
 
+func (m *HelloMessage) String() string {
+	return fmt.Sprintf("%s, Seq: %d, Ack: %d", MessageType(m.Type()), m.SeqID, m.AckID)
+}
+
 func (m *HelloMessage) GetSeqID() uint32 {
 	return m.SeqID
 }
@@ -105,6 +127,10 @@ func (m *AckMessage) Unmarshal(data []byte) error {
 	}
 	m.AckID = binary.BigEndian.Uint32(data)
 	return nil
+}
+
+func (m *AckMessage) String() string {
+	return fmt.Sprintf("%s, Ack: %d", MessageType(m.Type()), m.AckID)
 }
 
 type DataMessage struct {
@@ -138,6 +164,10 @@ func (m *DataMessage) Unmarshal(data []byte) error {
 	return nil
 }
 
+func (m *DataMessage) String() string {
+	return fmt.Sprintf("%s, Seq: %d, Data: %v", MessageType(m.Type()), m.SeqID, string(m.Data))
+}
+
 func (m *DataMessage) GetSeqID() uint32 {
 	return m.SeqID
 }
@@ -161,4 +191,8 @@ func (m *ByeMessage) Marshal() []byte {
 
 func (m *ByeMessage) Unmarshal(data []byte) error {
 	return nil
+}
+
+func (m *ByeMessage) String() string {
+	return fmt.Sprintf("%s", MessageType(m.Type()))
 }
